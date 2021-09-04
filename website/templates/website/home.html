@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        p {
+            font-size: 80px;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .logout {
+                float: right;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: red;
+            }
+
+        .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+         }
+
+        .dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+         }
+
+         .dropdown-content a:hover {
+                background-color: #ddd;
+          }
+
+        .dropdown:hover .dropdown-content {
+                display: block;
+        }
+
+        .searchbar {
+            margin-left: 28%;
+        }
+
+        .searchform  {
+            height: 100px;
+        }
+
+        input[type=text] {
+          width: 50%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+    </style>
+    </head>
+        <body>
+
+            <div class="navbar">
+                <div class="logout">
+                      <a href="{% url 'logout' %}">Logout</a>
+                </div>
+                    <div class="list">
+                        <a href="#movies" name="movies">Movies</a>
+                        <a href="#genre" name="genre">Genres</a>
+                    </div>
+                        <div class="dropdown">
+                            <a href="dropbtn">Release Date</a>
+                            <div class="dropdown-content">
+                            <a href="#">2021 </a>
+                            <a href="#">2020 </a>
+                            <a href="#">2019 </a>
+                            <a href="#">2018 </a>
+                            <a href="#">2017 </a>
+                            <a href="#">2016 </a>
+                            </div>
+                        </div> 
+                   
+            </div>
+           
+            <div class="searchbar"> 
+            <form class= "searchform" action=" " method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">Search</button>
+            </form>
+            </div>
+
+            {% for i in movies %}
+            <div>{{i}}</div>
+            {% endfor %}
+            {{code}}
+            <img src="{{images}}" alt="">
+        </body>
+</html>
