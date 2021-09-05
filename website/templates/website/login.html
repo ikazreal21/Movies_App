@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding-top: 60px;
+            background-color: #00d4ff;
+        }
+        
+        input[type=text], input[type=password] {
+          width: 40%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+        button {
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 50%;
+        }
+
+        .register button {
+          background-color: #04AA6D;
+          color: white;
+          border: none;
+          cursor: pointer;
+          width: 7%;
+        }
+        
+        button:hover {
+          opacity: 0.8;
+        }
+        
+        
+        .container {
+          padding: 16px,10px;
+          margin: auto;
+          width: 60%;
+          text-align: center;
+
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+
+        .register {
+          text-align: center;
+        }
+        
+        .messages {
+          text-align: center;
+        }
+        </style>
+
+    </head>
+        <body>
+            <form action="" method="POST">
+                <h2> Login </h2>
+                {% csrf_token %}
+                <div class="login">
+                    <div class="container">
+                        <label for="username"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="username" required>
+                        <p> &#32; </p>
+                    
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+                        <p> &#32; </p>
+                            
+                        <button type="submit">Login</button>
+                    </div>
+                </div>
+             </form>
+
+             {% for i in messages %}
+                <p class="messages">{{i}}</p>
+            {% endfor %}
+
+             <div class="register"> 
+                <p> Not yet register?  <a href="{% url 'register' %}"> <button type="submit2">Register</button> </a> </p>
+              </div>
+
+        </body>
+</html>
